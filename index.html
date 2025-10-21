@@ -1,53 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Links Tradimaq</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Links Tradimaq</title>
+	<script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-6">
+	<div class="max-w-md w-full bg-white shadow-xl rounded-2xl p-6 text-center">
+		<img src="https://assinatura.tradimaq.com.br/logo_tradimaq.png" alt="Logo" class="mx-auto mb-6 w-40">
+		<h1 class="text-2xl font-semibold mb-4">Acesse nossos links</h1>
+		
+		<div id="links" class="flex flex-col gap-3">
+			<a href="#" id="link-chamado" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition">Abrir Chamado</a>
+			<a href="https://tradimaq.com.br" target="_blank" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-3 rounded-xl transition">Site Institucional</a>
+			<a href="https://wa.me/5531996363424" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-medium py-3 rounded-xl transition">WhatsApp Suporte</a>
+		</div>
+		
+		<p class="text-sm text-gray-500 mt-6">© 2025 Tradimaq</p>
+	</div>
 
-  <div class="max-w-md w-full bg-white shadow-xl rounded-2xl p-6 text-center">
-    <img src="https://assinatura.tradimaq.com.br/logo_tradimaq.png" alt="Logo" class="mx-auto mb-6 w-40">
-    <h1 class="text-2xl font-semibold mb-4">Acesse nossos links</h1>
-
-    <div id="links" class="flex flex-col gap-3">
-      <a href="#" id="link-chamado" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition">Abrir Chamado</a>
-      <a href="https://tradimaq.com.br" target="_blank" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-3 rounded-xl transition">Site Institucional</a>
-      <a href="https://wa.me/5531996363424" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-medium py-3 rounded-xl transition">WhatsApp Suporte</a>
-    </div>
-
-    <p class="text-sm text-gray-500 mt-6">© 2025 Tradimaq</p>
-  </div>
-
-  <script>
-    // Função para capturar parâmetros da URL
-    function getParameterByName(name) {
-      const url = window.location.href;
-      const nameRegex = name.replace(/[\[\]]/g, '\\$&');
-      const regex = new RegExp('[?&]' + nameRegex + '(=([^&#]*)|&|#|$)');
-      const results = regex.exec(url);
-      if (!results) return null;
-      if (!results[2]) return '';
-      return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-
-    // Recupera a TAG da URL
-    const tagEquip = getParameterByName('tag');
-	console.log(tagEquip)
-
-    // Seu link base do Google Forms (com o campo de TAG configurado)
-    const formBase = "https://docs.google.com/forms/d/e/1FAIpQLSfL2V6JOVlEV_8qCuvLnsAAnXVJgC4bunV1ubPoZC_IC1ne-g/viewform?usp=pp_url&entry.855653907="
-	document.getElementById("link-chamado").href = formBase + tagEquip
-	//formBase + encodeURIComponent(tagEquip);
-
-    // Define o link final com o parâmetro da TAG
-    //if (tagEquip) {
-      //document.getElementById("link-chamado").href = formBase + encodeURIComponent(tagEquip);
-    //} else {
-      //document.getElementById("link-chamado").href = formBase;
-    //}
-  </script>
+	<script>
+		function getParameterByName(name) {
+			const url = window.location.href;
+			const nameRegex = name.replace(/[\[\]]/g, '\\$&');
+			const regex = new RegExp('[?&]' + nameRegex + '(=([^&#]*)|&|#|$)');
+			const results = regex.exec(url);
+			if (!results) return null;
+			if (!results[2]) return '';
+			
+			return decodeURIComponent(results[2].replace(/\+/g, ' '));
+		}
+		
+		const tagEquip = getParameterByName('tag');
+		const formBase = "https://docs.google.com/forms/d/e/1FAIpQLSfL2V6JOVlEV_8qCuvLnsAAnXVJgC4bunV1ubPoZC_IC1ne-g/viewform";
+		const refTag = "?usp=pp_url&entry.855653907=" + tagEquip
+	
+		if (tagequip) {
+			document.getElementById("link-chamado").href = formBase + refTag;
+		} else {
+			document.getElementById("link-chamado").href = formBase;
+		}
+	</script>
 </body>
 </html>
